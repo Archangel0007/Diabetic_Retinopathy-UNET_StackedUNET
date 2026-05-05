@@ -1,77 +1,116 @@
-# Diabetic Retinopathy Detection using UNET and Stacked UNET Architecture
-The primary objective of this research paper is to study and compare the performace UNET architeture and the stacked UNET architecture in the use case of detection of Diabetic Retinopathy.
+# Enhancing Diabetic Retinopathy Detection with CNN-Based Models: A Comparative Study of UNET and Stacked UNET Architectures
+
+This repository compares the performance of UNET and Stacked UNET architectures for diabetic retinopathy segmentation tasks using CNN-based models. The project is organized into separate experiment folders for single UNET vs stacked UNET and includes notebooks plus exported metrics.
+
+## Repository Structure
+
+- `Single_UNET/`  
+  Notebook and metrics for the single UNET model.
+- `Stacked_UNET/`  
+  Notebook and metrics for the stacked UNET model.
+- `Architectures/`  
+  Architecture diagrams/images used in this README.
+- `requirements.txt`  
+  Python dependencies.
+- `.gitignore`  
+  Ignore rules for local data, outputs, checkpoints, etc. (you’ll add this)
 
 ## Dataset
 
-- **Total Images**: 3662
-- [Link to Dataset at kaggle](https://www.kaggle.com/competitions/aptos2019-blindness-detection/overview)
-- **Pre-processing Applied**:
-  - Resize to 256x256 
-  - Converted to Grayscale
+This project uses the APTOS 2019 Blindness Detection dataset:
 
-- **Augmentation Applied**:
-  - Vertical Flip
-### Dataset Setup
+- [APTOS 2019 Blindness Detection (Kaggle)](https://www.kaggle.com/c/aptos2019-blindness-detection)
 
-1. **Download the Dataset**
-   Download the dataset from [Link](https://www.kaggle.com/competitions/aptos2019-blindness-detection/overview)
-2. **Place the Dataset in the Project**
-   Have the Dataset in the same directory as you will run the code in.
+> Note: The dataset is not included in this repository. You must download it from Kaggle.
 
-## Tech Stack
-<div><img src="https://img.icons8.com/?size=100&id=n3QRpDA7KZ7P&format=png&color=000000" height="40px" width="40px">
-<img src="https://img.icons8.com/?size=100&id=13441&format=png&color=000000" height="40px" width="40px">
-<img src="https://img.icons8.com/?size=100&id=bpip0gGiBLT1&format=png&color=000000" height="40px" width="40px">
-<img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/Keras_logo.svg" height="40px" width="40px">
+### Pre-processing
+- Resize to `256x256`
+- Convert to grayscale
 
+### Dataset Setup (Recommended)
+
+To avoid path issues, place data under a single shared directory at the repo root:
+
+```text
+Diabetic_Retinopathy-UNET_Stacked_UNET/
+  data/
+    APTOS/
+      train.csv
+      train_images/
+        <image files>
+```
+
+> Notes:
+> - The notebooks may contain hard-coded paths. Update them to point to the folders above.
+> - If you prefer a different layout, keep it consistent and update notebook paths accordingly.
 ## Models Implemented
-### UNET Model:
-<br> 
-Implementing the traditional UNET architecture, widely known for its efficiency in medical image segmentation tasks. The model was trained on a dataset of labeled retinal images to accurately identify and segment areas affected by diabetic retinopathy. The training scripts along with the metrics are available in the Single_UNET directory of the repository.
-</br>
-</br>
 
-<p align= "center">
-  <img src="Architectures/UNET.png?raw=true" alt="alt text" width="500" height="300">
+### UNET (Single)
+
+Implements the traditional UNET architecture commonly used for medical image segmentation.
+
+<p align="center">
+  <img src="Architectures/UNET.png?raw=true" alt="UNET architecture" width="650" height="400">
 </p>
 
-</br>
+### Stacked UNET
 
-### Stacked UNET Model:
-<br> 
-Developed a novel Stacked UNET model, which integrates multiple UNET architectures in a hierarchical fashion to capture complex features and enhance segmentation performance. This approach aims to improve the sensitivity and specificity of the detection process, particularly for identifying early-stage diabetic retinopathy. The training procedures and model metrics are located in the Stacked_UNET folder of the repository.
+Implements a stacked-UNET approach intended to capture richer features and improve segmentation performance.
 
-</br>
-</br>
-<p align= "center">
-  <img src="Architectures/UNET-2.png?raw=true" alt="alt text" width="900" height="300">
+<p align="center">
+  <img src="Architectures/UNET-2.png?raw=true" alt="Stacked UNET architecture" width="900" height="500">
 </p>
-</br>
 
 ## Installation
 
-1. **Clone the Repository**
-   ```bash
-   git clone https://github.com/your-username/Diabetic_Retinoapthy-UNET_StacketUNET.git
-   cd Diabetic_Retinoapthy-UNET_StacketUNET
+1. Clone the repository:
 
-2. **Install Dependencies**
+   ```bash
+   git clone https://github.com/AmeyaUppina/Diabetic_Retinopathy-UNET_Stacked_UNET.git
+   cd Diabetic_Retinopathy-UNET_Stacked_UNET
+   ```
+
+2. (Recommended) Create and activate a virtual environment:
+
+   ```bash
+   python -m venv .venv
+   # Windows:
+   .\.venv\Scripts\activate
+   # macOS/Linux:
+   source .venv/bin/activate
+   ```
+
+3. Install dependencies:
+
    ```bash
    pip install -r requirements.txt
-3. **Path your Dataset**
-   -If you have downloaded the dataset from the given link at kaggle , then place it in both the directories to avoid pathing issues.
-  -run this code on terminal before strting the script
-     ```bash
-     mkdir Preprocessing
-     cd Preprocessing
-     mkdir Data
-     cd ..
-4. **Some Changes to be made**
-   </br>In each of the scripts (Single_Stack_UNET.ipynb & 2_Stacked_UNET.ipynb) in cell numbers 1 , 3 and 8 the paths needs to be changed,</br> 1 -> "aptos2019-blindness-detection/train.csv"</br> 3 ->"aptos2019-blindness-detection/train_images/{x}.png" & "Preprocessed/Data" </br>8 -> "/Preprocessed/Data" 
-  </br>
+   ```
 
-## Acknowledgments
+## Usage
 
-- Thanks to Kaggle for the dataset and its brilliant interface it provided to execute our code.
-- Thanks to Keras Libraries for providing us with the most flexible and robust CNN layers to build our models.
-- And special thanks to the coding community at Stack Overflow for having almost all the solutions for the erros we faced.
+Run the notebook corresponding to the model you want:
+
+- Single UNET: `Single_UNET/Single_Stack_UNET.ipynb`
+- Stacked UNET: `Stacked_UNET/2_Stacked_UNET.ipynb`
+
+If a notebook fails due to missing files:
+1. Search inside the notebook for dataset path variables/file paths (e.g., `train.csv`, `train_images`, or `data/`).
+2. Update them to match your local dataset directory (see **Dataset Setup**).
+
+## Tech Stack
+
+<div align="center">
+
+<img src="https://img.shields.io/badge/Python%20-%2314354C.svg?&style=for-the-badge&logo=python&logoColor=white" alt="Python" />
+<img src="https://img.shields.io/badge/TensorFlow%20-%23FF6F00.svg?&style=for-the-badge&logo=tensorflow&logoColor=white" alt="TensorFlow" />
+<img src="https://img.shields.io/badge/Keras%20-%23D00000.svg?&style=for-the-badge&logo=keras&logoColor=white" alt="Keras" />
+<img src="https://img.shields.io/badge/OpenCV%20-%23white.svg?&style=for-the-badge&logo=opencv&logoColor=white" alt="OpenCV" />
+<img src="https://img.shields.io/badge/NumPy%20-%23013243.svg?&style=for-the-badge&logo=numpy&logoColor=white" alt="NumPy" />
+
+</div>
+
+## Acknowledgements
+
+- Thanks to Kaggle and the APTOS dataset providers.
+- Thanks to the Keras/TensorFlow ecosystem for the deep learning framework.
+- Thanks to the open-source community resources (e.g., Stack Overflow) for troubleshooting.

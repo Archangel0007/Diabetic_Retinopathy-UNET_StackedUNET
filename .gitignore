@@ -1,0 +1,58 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+.Python
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+env/
+
+# Jupyter
+.ipynb_checkpoints/
+*.nbconvert.ipynb
+
+# OS/editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Data
+data/
+Data/
+dataset/
+datasets/
+**/data/
+**/Data/
+
+# Model artefacts/training outputs
+*.h5
+*.hdf5
+*.keras
+*.ckpt
+*.pth
+*.pt
+*.onnx
+*.tflite
+
+# Logs/outputs
+logs/
+wandb/
+mlruns/
+runs/
+outputs/
+results/
+
+# Archives
+*.zip
+*.tar.gz
+*.7z
